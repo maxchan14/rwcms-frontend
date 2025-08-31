@@ -6,7 +6,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { mockOrgChartData } from '../mock/data';
 
-const OrgChartEditor_v5 = () => {
+const OrgChartEditorV5 = () => {
   const [data, setData] = useState(JSON.parse(JSON.stringify(mockOrgChartData)));
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [confirmMessage, setConfirmMessage] = useState('');
@@ -159,7 +159,7 @@ const OrgChartEditor_v5 = () => {
   const renderCard = (node, path, idx, siblingsLength, type) => (
     <Card sx={{ m: 1, minWidth: 300 }}>
       <CardContent>
-        <Typography variant="h6">{(type === 'director' ? node.name?.en : node.officeName?.en || node.personName?.en || node.branchTitle?.en) || 'Unnamed'}</Typography>
+        <Typography variant="h6">{(type === 'director' ? node.name?.en : node.officeName?.en || node.name?.en || node.title?.en) || 'Unnamed'}</Typography>
         {type === 'director' && (
           <>
             {renderFields(node, path, 'name')}
@@ -169,8 +169,8 @@ const OrgChartEditor_v5 = () => {
         {type === 'office' && renderFields(node, path, 'officeName')}
         {(type === 'deputy' || type === 'assistant') && (
           <>
-            {renderFields(node, path, 'branchTitle')}
-            {renderFields(node, path, 'personName')}
+            {renderFields(node, path, 'title')}
+            {renderFields(node, path, 'name')}
             {node.responsibilities && renderResponsibilities(node.responsibilities, [...path, 'responsibilities'])}
           </>
         )}
@@ -207,16 +207,16 @@ const OrgChartEditor_v5 = () => {
         </Box>
         {type === 'office' && (
           <Button startIcon={<AddIcon />} onClick={() => addItem([...path, 'deputies'], {
-            branchTitle: { en: '', tc: '', sc: '' },
-            personName: { en: '', tc: '', sc: '' },
+            title: { en: '', tc: '', sc: '' },
+            name: { en: '', tc: '', sc: '' },
             responsibilities: [],
             assistants: [],
           })}>Add Deputy</Button>
         )}
         {type === 'deputy' && (
           <Button startIcon={<AddIcon />} onClick={() => addItem([...path, 'assistants'], {
-            branchTitle: { en: '', tc: '', sc: '' },
-            personName: { en: '', tc: '', sc: '' },
+            title: { en: '', tc: '', sc: '' },
+            name: { en: '', tc: '', sc: '' },
             responsibilities: [],
           })}>Add Assistant</Button>
         )}
@@ -244,4 +244,4 @@ const OrgChartEditor_v5 = () => {
   );
 };
 
-export default OrgChartEditor_v5;
+export default OrgChartEditorV5;

@@ -37,12 +37,12 @@ export const mockOrgChartData = {
       },
       deputies: [
         {
-          branchTitle: {
+          title: {
             en: 'Deputy Director / General',
             tc: '副署長 / 一般事務',
             sc: '副署长 / 一般事务',
           },
-          personName: {
+          name: {
             en: 'Ms CHOI Kwok-chun, Jane',
             tc: '蔡幗珍女士',
             sc: '蔡帼珍女士',
@@ -76,12 +76,12 @@ export const mockOrgChartData = {
           ],
           assistants: [
             {
-              branchTitle: {
+              title: {
                 en: 'Assistant Director / Regional 1',
                 tc: '助理署長 / 區域1',
                 sc: '助理署长 / 区域1',
               },
-              personName: {
+              name: {
                 en: 'Ms PANG Wai-shan, Catherine',
                 tc: '彭蔚珊女士',
                 sc: '彭蔚珊女士',
@@ -95,12 +95,12 @@ export const mockOrgChartData = {
               ],
             },
             {
-              branchTitle: {
+              title: {
                 en: 'Assistant Director / Regional 2',
                 tc: '助理署長 / 區域2',
                 sc: '助理署长 / 区域2',
               },
-              personName: {
+              name: {
                 en: 'Mr CHAN Chung-ming, Damien',
                 tc: '陳仲銘先生',
                 sc: '陈仲铭先生',
@@ -114,12 +114,12 @@ export const mockOrgChartData = {
               ],
             },
             {
-              branchTitle: {
+              title: {
                 en: 'Assistant Director / Regional 3',
                 tc: '助理署長 / 區域3',
                 sc: '助理署长 / 区域3',
               },
-              personName: {
+              name: {
                 en: 'Mr CHAN Sing-chow, Lawrance',
                 tc: '陳承愀先生',
                 sc: '陈承愀先生',
@@ -133,12 +133,12 @@ export const mockOrgChartData = {
               ],
             },
             {
-              branchTitle: {
+              title: {
                 en: 'Assistant Director / Headquarters',
                 tc: '助理署長 / 總部',
                 sc: '助理署长 / 总部',
               },
-              personName: {
+              name: {
                 en: 'Mr KWOK Kin-man, Alex',
                 tc: '郭健敏先生',
                 sc: '郭健敏先生',
@@ -169,12 +169,12 @@ export const mockOrgChartData = {
           ],
         },
         {
-          branchTitle: {
+          title: {
             en: 'Deputy Director / Specialist',
             tc: '副署長 / 專業事務',
             sc: '副署长 / 专业事务',
           },
-          personName: {
+          name: {
             en: 'Ms CHIU Lee-lee, Lily',
             tc: '趙莉莉女士',
             sc: '赵莉莉女士',
@@ -218,12 +218,12 @@ export const mockOrgChartData = {
           ],
           assistants: [
             {
-              branchTitle: {
+              title: {
                 en: 'Assistant Director / Specialist 1',
                 tc: '助理署長 / 專業事務1',
                 sc: '助理署长 / 专业事务1',
               },
-              personName: {
+              name: {
                 en: 'Ms SIN Kwai-lan, Sandy',
                 tc: '冼桂蘭女士',
                 sc: '冼桂兰女士',
@@ -262,12 +262,12 @@ export const mockOrgChartData = {
               ],
             },
             {
-              branchTitle: {
+              title: {
                 en: 'Assistant Director / Specialist 2',
                 tc: '助理署長 / 專業事務2',
                 sc: '助理署长 / 专业事务2',
               },
-              personName: {
+              name: {
                 en: 'Miss LO Pui-yiu, Sapphire',
                 tc: '盧珮瑤女士',
                 sc: '卢珮瑶女士',
@@ -301,12 +301,12 @@ export const mockOrgChartData = {
               ],
             },
             {
-              branchTitle: {
+              title: {
                 en: 'Assistant Director / Specialist 3',
                 tc: '助理署長 / 專業事務3',
                 sc: '助理署长 / 专业事务3',
               },
-              personName: {
+              name: {
                 en: 'Ms LEUNG Miu-yin, Karen',
                 tc: '梁妙燕女士',
                 sc: '梁妙燕女士',
@@ -341,12 +341,12 @@ export const mockOrgChartData = {
       },
       deputies: [
         {
-          branchTitle: {
+          title: {
             en: 'Deputy Director / Survey and Mapping',
             tc: '副署長 / 測繪事務',
             sc: '副署长 / 测绘事务',
           },
-          personName: {
+          name: {
             en: 'Mr CHANG Kwok-fai',
             tc: '張國輝先生',
             sc: '张国辉先生',
@@ -400,12 +400,12 @@ export const mockOrgChartData = {
           ],
           assistants: [
             {
-              branchTitle: {
+              title: {
                 en: 'Assistant Director / Survey and Mapping',
                 tc: '助理署長 / 測繪事務',
                 sc: '助理署长 / 测绘事务',
               },
-              personName: {
+              name: {
                 en: 'Mr CHU Siu-ki, Alex',
                 tc: '朱紹基先生',
                 sc: '朱绍基先生',
@@ -429,12 +429,12 @@ export const mockOrgChartData = {
                 ],
               },
               {
-                branchTitle: {
+                title: {
                   en: 'Assistant Director / Spatial Data',
                   tc: '助理署長 / 空間數據',
                   sc: '助理署长 / 空间数据',
                 },
-                personName: {
+                name: {
                   en: 'Mr YEUNG Cheuk-man, Danny',
                   tc: '楊卓文先生',
                   sc: '杨卓文先生',
@@ -469,12 +469,12 @@ export const mockOrgChartData = {
         },
         deputies: [
           {
-            branchTitle: {
+            title: {
               en: 'Deputy Director / Legal',
               tc: '副署長 / 法律事務',
               sc: '副署长 / 法律事务',
             },
-            personName: {
+            name: {
               en: 'Ms LOK Pui-man, Ophelia',
               tc: '駱佩文女士',
               sc: '骆佩文女士',
@@ -508,12 +508,12 @@ export const mockOrgChartData = {
             ],
             assistants: [
               {
-                branchTitle: {
+                title: {
                   en: 'Assistant Director / Legal (Hong Kong & Tsuen Wan)',
                   tc: '助理署長 / 法律事務(港島及荃灣)',
                   sc: '助理署长 / 法律事务(港岛及荃湾)',
                 },
-                personName: {
+                name: {
                   en: 'Mr HUNG Hing-lin, Henry',
                   tc: '洪興連先生',
                   sc: '洪兴连先生',
@@ -537,12 +537,12 @@ export const mockOrgChartData = {
                 ],
               },
               {
-                branchTitle: {
+                title: {
                   en: 'Assistant Director / Legal (Kowloon & New Territories West)',
                   tc: '助理署長 / 法律事務(九龍及新界西)',
                   sc: '助理署长 / 法律事务(九龙及新界西)',
                 },
-                personName: {
+                name: {
                   en: 'Mr SIN Siu-wah, Alvin',
                   tc: '冼兆華先生',
                   sc: '冼兆华先生',
@@ -566,12 +566,12 @@ export const mockOrgChartData = {
               ],
             },
             {
-              branchTitle: {
+              title: {
                 en: 'Assistant Director / Legal (Port, Airport, Railway Development & New Territories East)',
                 tc: '助理署長 / 法律事務(港口機場鐵路發展及新界東)',
                 sc: '助理署长 / 法律事务(港口机场铁路发展及新界东)',
               },
-              personName: {
+              name: {
                 en: 'Miss CHAN Wai-yee, Helen',
                 tc: '陳慧儀女士',
                 sc: '陈慧仪女士',
@@ -606,12 +606,12 @@ export const mockOrgChartData = {
       },
       deputies: [
         {
-          branchTitle: {
+          title: {
             en: 'Principal Executive Officer / Administration',
             tc: '首席行政主任 / 行政',
             sc: '首席行政主任 / 行政',
           },
-          personName: {
+          name: {
             en: 'Ms HO Mung-wan, June',
             tc: '何夢雲女士',
             sc: '何梦云女士',
@@ -625,12 +625,12 @@ export const mockOrgChartData = {
           ],
           assistants: [
             {
-              branchTitle: {
+              title: {
                 en: 'Departmental Secretary',
                 tc: '署務秘書',
                 sc: '署务秘书',
               },
-              personName: {
+              name: {
                 en: 'Ms Grace CHIU',
                 tc: '趙穎女士',
                 sc: '赵颖女士',
@@ -649,12 +649,12 @@ export const mockOrgChartData = {
               ],
             },
             {
-              branchTitle: {
+              title: {
                 en: 'Senior Treasury Accountant / Headquarters',
                 tc: '高級庫務會計師 / 總部',
                 sc: '高级库务会计师 / 总部',
               },
-              personName: {
+              name: {
                 en: 'Ms HO Cheuk-ting, Cindy',
                 tc: '何卓婷女士',
                 sc: '何卓婷女士',

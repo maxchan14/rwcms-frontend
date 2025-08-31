@@ -41,12 +41,12 @@ const flattenData = (data, parentId = null) => {
         id: depId,
         parentId: officeId,
         type: 'deputy',
-        nameEn: deputy.personName.en,
-        nameTc: deputy.personName.tc,
-        nameSc: deputy.personName.sc,
-        titleEn: deputy.branchTitle.en,
-        titleTc: deputy.branchTitle.tc,
-        titleSc: deputy.branchTitle.sc,
+        nameEn: deputy.name.en,
+        nameTc: deputy.name.tc,
+        nameSc: deputy.name.sc,
+        titleEn: deputy.title.en,
+        titleTc: deputy.title.tc,
+        titleSc: deputy.title.sc,
         path: ['offices', officeIdx, 'deputies', depIdx],
       });
 
@@ -70,12 +70,12 @@ const flattenData = (data, parentId = null) => {
           id: assId,
           parentId: depId,
           type: 'assistant',
-          nameEn: assistant.personName.en,
-          nameTc: assistant.personName.tc,
-          nameSc: assistant.personName.sc,
-          titleEn: assistant.branchTitle.en,
-          titleTc: assistant.branchTitle.tc,
-          titleSc: assistant.branchTitle.sc,
+          nameEn: assistant.name.en,
+          nameTc: assistant.name.tc,
+          nameSc: assistant.name.sc,
+          titleEn: assistant.title.en,
+          titleTc: assistant.title.tc,
+          titleSc: assistant.title.sc,
           path: ['offices', officeIdx, 'deputies', depIdx, 'assistants', assIdx],
         });
 
@@ -98,7 +98,7 @@ const flattenData = (data, parentId = null) => {
   return rows;
 };
 
-const OrgChartEditor_v4 = () => {
+const OrgChartEditorV4 = () => {
   const [data, setData] = useState(mockOrgChartData);
   const [rows, setRows] = useState(flattenData(mockOrgChartData));
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -146,15 +146,15 @@ const OrgChartEditor_v4 = () => {
         });
       } else if (type === 'deputy' && parentRow.type === 'office') {
         current[lastKey].deputies.push({
-          branchTitle: { en: '', tc: '', sc: '' },
-          personName: { en: '', tc: '', sc: '' },
+          title: { en: '', tc: '', sc: '' },
+          name: { en: '', tc: '', sc: '' },
           responsibilities: [],
           assistants: [],
         });
       } else if (type === 'assistant' && parentRow.type === 'deputy') {
         current[lastKey].assistants.push({
-          branchTitle: { en: '', tc: '', sc: '' },
-          personName: { en: '', tc: '', sc: '' },
+          title: { en: '', tc: '', sc: '' },
+          name: { en: '', tc: '', sc: '' },
           responsibilities: [],
         });
       } else if (type === 'responsibility') {
@@ -223,12 +223,12 @@ const OrgChartEditor_v4 = () => {
       updateField(path, null, 'tc', newRow.nameTc);
       updateField(path, null, 'sc', newRow.nameSc);
     } else {
-      updateField([...path, 'personName' || 'officeName' || 'name'], 'en', newRow.nameEn);
-      updateField([...path, 'personName' || 'officeName' || 'name'], 'tc', newRow.nameTc);
-      updateField([...path, 'personName' || 'officeName' || 'name'], 'sc', newRow.nameSc);
-      updateField([...path, 'branchTitle' || 'title'], 'en', newRow.titleEn);
-      updateField([...path, 'branchTitle' || 'title'], 'tc', newRow.titleTc);
-      updateField([...path, 'branchTitle' || 'title'], 'sc', newRow.titleSc);
+      updateField([...path, 'name' || 'officeName' || 'name'], 'en', newRow.nameEn);
+      updateField([...path, 'name' || 'officeName' || 'name'], 'tc', newRow.nameTc);
+      updateField([...path, 'name' || 'officeName' || 'name'], 'sc', newRow.nameSc);
+      updateField([...path, 'title' || 'title'], 'en', newRow.titleEn);
+      updateField([...path, 'title' || 'title'], 'tc', newRow.titleTc);
+      updateField([...path, 'title' || 'title'], 'sc', newRow.titleSc);
     }
     return newRow;
   };
@@ -264,4 +264,4 @@ const OrgChartEditor_v4 = () => {
   );
 };
 
-export default OrgChartEditor_v4;
+export default OrgChartEditorV4;

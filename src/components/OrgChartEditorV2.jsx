@@ -5,7 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { mockOrgChartData } from '../mock/data';
 
-const OrgChartEditor_v2 = () => {
+const OrgChartEditorV2 = () => {
   const [formData, setFormData] = useState(JSON.parse(JSON.stringify(mockOrgChartData)));
   const [expandedSections, setExpandedSections] = useState({ director: true });
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -99,8 +99,8 @@ const OrgChartEditor_v2 = () => {
     setFormData((prev) => {
       const newOffices = [...prev.offices];
       newOffices[officeIndex].deputies.push({
-        branchTitle: { en: '', tc: '', sc: '' },
-        personName: { en: '', tc: '', sc: '' },
+        title: { en: '', tc: '', sc: '' },
+        name: { en: '', tc: '', sc: '' },
         responsibilities: [],
         assistants: [],
       });
@@ -114,7 +114,7 @@ const OrgChartEditor_v2 = () => {
 
   const removeDeputy = (officeIndex, depIndex) => {
     const deputy = formData.offices[officeIndex].deputies[depIndex];
-    const name = deputy.personName.en || 'this deputy director';
+    const name = deputy.name.en || 'this deputy director';
     setConfirmMessage(`Are you sure you want to remove the deputy director: ${name}? This action cannot be undone.`);
     setConfirmCallback(() => () => {
       setFormData((prev) => {
@@ -140,8 +140,8 @@ const OrgChartEditor_v2 = () => {
     setFormData((prev) => {
       const newOffices = [...prev.offices];
       newOffices[officeIndex].deputies[depIndex].assistants.push({
-        branchTitle: { en: '', tc: '', sc: '' },
-        personName: { en: '', tc: '', sc: '' },
+        title: { en: '', tc: '', sc: '' },
+        name: { en: '', tc: '', sc: '' },
         responsibilities: [],
       });
       return { ...prev, offices: newOffices };
@@ -154,7 +154,7 @@ const OrgChartEditor_v2 = () => {
 
   const removeAssistant = (officeIndex, depIndex, assIndex) => {
     const assistant = formData.offices[officeIndex].deputies[depIndex].assistants[assIndex];
-    const name = assistant.personName.en || 'this assistant director';
+    const name = assistant.name.en || 'this assistant director';
     setConfirmMessage(`Are you sure you want to remove the assistant director: ${name}? This action cannot be undone.`);
     setConfirmCallback(() => () => {
       setFormData((prev) => {
@@ -277,7 +277,7 @@ const OrgChartEditor_v2 = () => {
               <Accordion key={depIndex} expanded={expandedSections[`office-${officeIndex}-deputy-${depIndex}`] ?? false} onChange={() => toggleSection(`office-${officeIndex}-deputy-${depIndex}`)} sx={{ ml: 2 }}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                    <Typography variant="subtitle1">Deputy Director {depIndex + 1}: {deputy.personName.en || 'Unnamed'}</Typography>
+                    <Typography variant="subtitle1">Deputy Director {depIndex + 1}: {deputy.name.en || 'Unnamed'}</Typography>
                     <Button variant="text" color="error" startIcon={<RemoveIcon />} onClick={(e) => { e.stopPropagation(); removeDeputy(officeIndex, depIndex); }}>
                       Remove Deputy
                     </Button>
@@ -286,24 +286,24 @@ const OrgChartEditor_v2 = () => {
                 <AccordionDetails>
                   <Grid container spacing={2} direction="row" sx={{ mb: 2 }}>
                     <Grid size={4}>
-                      <TextField label="Branch Title (EN)*" fullWidth value={deputy.branchTitle.en} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'branchTitle'], 'en', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                      <TextField label="Branch Title (EN)*" fullWidth value={deputy.title.en} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'title'], 'en', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                     </Grid>
                     <Grid size={4}>
-                      <TextField label="Branch Title (TC)*" fullWidth value={deputy.branchTitle.tc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'branchTitle'], 'tc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                      <TextField label="Branch Title (TC)*" fullWidth value={deputy.title.tc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'title'], 'tc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                     </Grid>
                     <Grid size={4}>
-                      <TextField label="Branch Title (SC)*" fullWidth value={deputy.branchTitle.sc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'branchTitle'], 'sc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                      <TextField label="Branch Title (SC)*" fullWidth value={deputy.title.sc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'title'], 'sc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                     </Grid>
                   </Grid>
                   <Grid container spacing={2} direction="row" sx={{ mb: 2 }}>
                     <Grid size={4}>
-                      <TextField label="Person Name (EN)*" fullWidth value={deputy.personName.en} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'personName'], 'en', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                      <TextField label="Person Name (EN)*" fullWidth value={deputy.name.en} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'name'], 'en', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                     </Grid>
                     <Grid size={4}>
-                      <TextField label="Person Name (TC)*" fullWidth value={deputy.personName.tc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'personName'], 'tc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                      <TextField label="Person Name (TC)*" fullWidth value={deputy.name.tc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'name'], 'tc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                     </Grid>
                     <Grid size={4}>
-                      <TextField label="Person Name (SC)*" fullWidth value={deputy.personName.sc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'personName'], 'sc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                      <TextField label="Person Name (SC)*" fullWidth value={deputy.name.sc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'name'], 'sc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                     </Grid>
                   </Grid>
 
@@ -342,7 +342,7 @@ const OrgChartEditor_v2 = () => {
                     <Accordion key={assIndex} expanded={expandedSections[`office-${officeIndex}-deputy-${depIndex}-assistant-${assIndex}`] ?? false} onChange={() => toggleSection(`office-${officeIndex}-deputy-${depIndex}-assistant-${assIndex}`)} sx={{ ml: 4 }}>
                       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                          <Typography variant="subtitle2">Assistant Director {assIndex + 1}: {assistant.personName.en || 'Unnamed'}</Typography>
+                          <Typography variant="subtitle2">Assistant Director {assIndex + 1}: {assistant.name.en || 'Unnamed'}</Typography>
                           <Button variant="text" color="error" startIcon={<RemoveIcon />} onClick={(e) => { e.stopPropagation(); removeAssistant(officeIndex, depIndex, assIndex); }}>
                             Remove Assistant
                           </Button>
@@ -351,24 +351,24 @@ const OrgChartEditor_v2 = () => {
                       <AccordionDetails>
                         <Grid container spacing={2} direction="row" sx={{ mb: 2 }}>
                           <Grid size={4}>
-                            <TextField label="Branch Title (EN)*" fullWidth value={assistant.branchTitle.en} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'branchTitle'], 'en', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                            <TextField label="Branch Title (EN)*" fullWidth value={assistant.title.en} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'title'], 'en', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                           </Grid>
                           <Grid size={4}>
-                            <TextField label="Branch Title (TC)*" fullWidth value={assistant.branchTitle.tc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'branchTitle'], 'tc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                            <TextField label="Branch Title (TC)*" fullWidth value={assistant.title.tc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'title'], 'tc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                           </Grid>
                           <Grid size={4}>
-                            <TextField label="Branch Title (SC)*" fullWidth value={assistant.branchTitle.sc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'branchTitle'], 'sc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                            <TextField label="Branch Title (SC)*" fullWidth value={assistant.title.sc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'title'], 'sc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                           </Grid>
                         </Grid>
                         <Grid container spacing={2} direction="row" sx={{ mb: 2 }}>
                           <Grid size={4}>
-                            <TextField label="Person Name (EN)*" fullWidth value={assistant.personName.en} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'personName'], 'en', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                            <TextField label="Person Name (EN)*" fullWidth value={assistant.name.en} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'name'], 'en', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                           </Grid>
                           <Grid size={4}>
-                            <TextField label="Person Name (TC)*" fullWidth value={assistant.personName.tc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'personName'], 'tc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                            <TextField label="Person Name (TC)*" fullWidth value={assistant.name.tc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'name'], 'tc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                           </Grid>
                           <Grid size={4}>
-                            <TextField label="Person Name (SC)*" fullWidth value={assistant.personName.sc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'personName'], 'sc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
+                            <TextField label="Person Name (SC)*" fullWidth value={assistant.name.sc} onChange={(e) => updateField(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'name'], 'sc', e.target.value)} sx={{ '& .MuiInputBase-root': { height: '56px' } }} />
                           </Grid>
                         </Grid>
 
@@ -438,4 +438,4 @@ const OrgChartEditor_v2 = () => {
   );
 };
 
-export default OrgChartEditor_v2;
+export default OrgChartEditorV2;

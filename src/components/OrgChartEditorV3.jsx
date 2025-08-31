@@ -24,7 +24,7 @@ function TabPanel(props) {
   );
 }
 
-const OrgChartEditor_v3 = () => {
+const OrgChartEditorV3 = () => {
   const [formData, setFormData] = useState(JSON.parse(JSON.stringify(mockOrgChartData)));
   const [tabValue, setTabValue] = useState(0);
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -84,8 +84,8 @@ const OrgChartEditor_v3 = () => {
     setFormData((prev) => {
       const newOffices = [...prev.offices];
       newOffices[officeIndex].deputies.push({
-        branchTitle: { en: '', tc: '', sc: '' },
-        personName: { en: '', tc: '', sc: '' },
+        title: { en: '', tc: '', sc: '' },
+        name: { en: '', tc: '', sc: '' },
         responsibilities: [],
         assistants: [],
       });
@@ -95,7 +95,7 @@ const OrgChartEditor_v3 = () => {
 
   const removeDeputy = (officeIndex, depIndex) => {
     const deputy = formData.offices[officeIndex].deputies[depIndex];
-    const name = deputy.personName.en || 'this deputy director';
+    const name = deputy.name.en || 'this deputy director';
     setConfirmMessage(`Are you sure you want to remove the deputy director: ${name}? This action cannot be undone.`);
     setConfirmCallback(() => () => {
       setFormData((prev) => {
@@ -111,8 +111,8 @@ const OrgChartEditor_v3 = () => {
     setFormData((prev) => {
       const newOffices = [...prev.offices];
       newOffices[officeIndex].deputies[depIndex].assistants.push({
-        branchTitle: { en: '', tc: '', sc: '' },
-        personName: { en: '', tc: '', sc: '' },
+        title: { en: '', tc: '', sc: '' },
+        name: { en: '', tc: '', sc: '' },
         responsibilities: [],
       });
       return { ...prev, offices: newOffices };
@@ -121,7 +121,7 @@ const OrgChartEditor_v3 = () => {
 
   const removeAssistant = (officeIndex, depIndex, assIndex) => {
     const assistant = formData.offices[officeIndex].deputies[depIndex].assistants[assIndex];
-    const name = assistant.personName.en || 'this assistant director';
+    const name = assistant.name.en || 'this assistant director';
     setConfirmMessage(`Are you sure you want to remove the assistant director: ${name}? This action cannot be undone.`);
     setConfirmCallback(() => () => {
       setFormData((prev) => {
@@ -196,14 +196,14 @@ const OrgChartEditor_v3 = () => {
             {office.deputies.map((deputy, depIndex) => (
               <Box key={depIndex} sx={{ ml: 4, mb: 1 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Typography>{deputy.personName.en || 'Unnamed Deputy'}</Typography>
+                  <Typography>{deputy.name.en || 'Unnamed Deputy'}</Typography>
                   <IconButton color="error" onClick={() => removeDeputy(officeIndex, depIndex)}><RemoveIcon /></IconButton>
                   <Button startIcon={<AddIcon />} onClick={() => addAssistant(officeIndex, depIndex)}>Add Assistant</Button>
                 </Box>
                 {deputy.assistants.map((assistant, assIndex) => (
                   <Box key={assIndex} sx={{ ml: 6 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Typography>{assistant.personName.en || 'Unnamed Assistant'}</Typography>
+                      <Typography>{assistant.name.en || 'Unnamed Assistant'}</Typography>
                       <IconButton color="error" onClick={() => removeAssistant(officeIndex, depIndex, assIndex)}><RemoveIcon /></IconButton>
                     </Box>
                   </Box>
@@ -238,27 +238,27 @@ const OrgChartEditor_v3 = () => {
               <Box key={depIndex} sx={{ ml: 2, mb: 2 }}>
                 <Typography variant="body1">Deputy {depIndex + 1}</Typography>
                 <Grid container spacing={2} sx={{ mb: 1 }}>
-                  <Grid size={4}><TextField label="Branch Title (EN)" value={deputy.branchTitle.en} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'branchTitle', 'en'], e.target.value)} fullWidth /></Grid>
-                  <Grid size={4}><TextField label="Branch Title (TC)" value={deputy.branchTitle.tc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'branchTitle', 'tc'], e.target.value)} fullWidth /></Grid>
-                  <Grid size={4}><TextField label="Branch Title (SC)" value={deputy.branchTitle.sc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'branchTitle', 'sc'], e.target.value)} fullWidth /></Grid>
+                  <Grid size={4}><TextField label="Branch Title (EN)" value={deputy.title.en} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'title', 'en'], e.target.value)} fullWidth /></Grid>
+                  <Grid size={4}><TextField label="Branch Title (TC)" value={deputy.title.tc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'title', 'tc'], e.target.value)} fullWidth /></Grid>
+                  <Grid size={4}><TextField label="Branch Title (SC)" value={deputy.title.sc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'title', 'sc'], e.target.value)} fullWidth /></Grid>
                 </Grid>
                 <Grid container spacing={2}>
-                  <Grid size={4}><TextField label="Person Name (EN)" value={deputy.personName.en} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'personName', 'en'], e.target.value)} fullWidth /></Grid>
-                  <Grid size={4}><TextField label="Person Name (TC)" value={deputy.personName.tc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'personName', 'tc'], e.target.value)} fullWidth /></Grid>
-                  <Grid size={4}><TextField label="Person Name (SC)" value={deputy.personName.sc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'personName', 'sc'], e.target.value)} fullWidth /></Grid>
+                  <Grid size={4}><TextField label="Person Name (EN)" value={deputy.name.en} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'name', 'en'], e.target.value)} fullWidth /></Grid>
+                  <Grid size={4}><TextField label="Person Name (TC)" value={deputy.name.tc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'name', 'tc'], e.target.value)} fullWidth /></Grid>
+                  <Grid size={4}><TextField label="Person Name (SC)" value={deputy.name.sc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'name', 'sc'], e.target.value)} fullWidth /></Grid>
                 </Grid>
                 {deputy.assistants.map((assistant, assIndex) => (
                   <Box key={assIndex} sx={{ ml: 4, mt: 2 }}>
                     <Typography variant="body2">Assistant {assIndex + 1}</Typography>
                     <Grid container spacing={2} sx={{ mb: 1 }}>
-                      <Grid size={4}><TextField label="Branch Title (EN)" value={assistant.branchTitle.en} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'branchTitle', 'en'], e.target.value)} fullWidth /></Grid>
-                      <Grid size={4}><TextField label="Branch Title (TC)" value={assistant.branchTitle.tc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'branchTitle', 'tc'], e.target.value)} fullWidth /></Grid>
-                      <Grid size={4}><TextField label="Branch Title (SC)" value={assistant.branchTitle.sc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'branchTitle', 'sc'], e.target.value)} fullWidth /></Grid>
+                      <Grid size={4}><TextField label="Branch Title (EN)" value={assistant.title.en} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'title', 'en'], e.target.value)} fullWidth /></Grid>
+                      <Grid size={4}><TextField label="Branch Title (TC)" value={assistant.title.tc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'title', 'tc'], e.target.value)} fullWidth /></Grid>
+                      <Grid size={4}><TextField label="Branch Title (SC)" value={assistant.title.sc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'title', 'sc'], e.target.value)} fullWidth /></Grid>
                     </Grid>
                     <Grid container spacing={2}>
-                      <Grid size={4}><TextField label="Person Name (EN)" value={assistant.personName.en} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'personName', 'en'], e.target.value)} fullWidth /></Grid>
-                      <Grid size={4}><TextField label="Person Name (TC)" value={assistant.personName.tc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'personName', 'tc'], e.target.value)} fullWidth /></Grid>
-                      <Grid size={4}><TextField label="Person Name (SC)" value={assistant.personName.sc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'personName', 'sc'], e.target.value)} fullWidth /></Grid>
+                      <Grid size={4}><TextField label="Person Name (EN)" value={assistant.name.en} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'name', 'en'], e.target.value)} fullWidth /></Grid>
+                      <Grid size={4}><TextField label="Person Name (TC)" value={assistant.name.tc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'name', 'tc'], e.target.value)} fullWidth /></Grid>
+                      <Grid size={4}><TextField label="Person Name (SC)" value={assistant.name.sc} onChange={(e) => handleChange(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'name', 'sc'], e.target.value)} fullWidth /></Grid>
                     </Grid>
                   </Box>
                 ))}
@@ -275,7 +275,7 @@ const OrgChartEditor_v3 = () => {
             <Typography variant="subtitle1">Office {officeIndex + 1}: {office.officeName.en}</Typography>
             {office.deputies.map((deputy, depIndex) => (
               <Box key={depIndex} sx={{ ml: 2, mb: 2 }}>
-                <Typography variant="body1">Deputy {depIndex + 1}: {deputy.personName.en}</Typography>
+                <Typography variant="body1">Deputy {depIndex + 1}: {deputy.name.en}</Typography>
                 <Button startIcon={<AddIcon />} onClick={() => addResponsibility(['offices', officeIndex, 'deputies', depIndex, 'responsibilities'])}>Add Responsibility</Button>
                 {deputy.responsibilities.map((resp, respIndex) => (
                   <Grid key={respIndex} container spacing={2} sx={{ mt: 1 }}>
@@ -287,7 +287,7 @@ const OrgChartEditor_v3 = () => {
                 ))}
                 {deputy.assistants.map((assistant, assIndex) => (
                   <Box key={assIndex} sx={{ ml: 4, mt: 2 }}>
-                    <Typography variant="body2">Assistant {assIndex + 1}: {assistant.personName.en}</Typography>
+                    <Typography variant="body2">Assistant {assIndex + 1}: {assistant.name.en}</Typography>
                     <Button startIcon={<AddIcon />} onClick={() => addResponsibility(['offices', officeIndex, 'deputies', depIndex, 'assistants', assIndex, 'responsibilities'])}>Add Responsibility</Button>
                     {assistant.responsibilities.map((resp, respIndex) => (
                       <Grid key={respIndex} container spacing={2} sx={{ mt: 1 }}>
@@ -317,4 +317,4 @@ const OrgChartEditor_v3 = () => {
   );
 };
 
-export default OrgChartEditor_v3;
+export default OrgChartEditorV3;
