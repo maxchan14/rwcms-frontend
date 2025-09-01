@@ -101,7 +101,9 @@ const ResponsibilitiesEditor = ({ data, path, onHandleChange, setFormData }) => 
           onRowOrderChange={handleRowOrderChange}
           processRowUpdate={processRowUpdate}
           getRowHeight={() => 'auto'}
-          disableColumnMenu
+          disableColumnMenu={true}
+          disableColumnResize={true}
+          disableColumnReorder={true}
           sx={{
             '& .MuiDataGrid-cell': { py: 1, whiteSpace: 'normal' },
           }}
