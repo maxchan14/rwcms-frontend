@@ -10,7 +10,6 @@ rwcms-frontend/
 ├── index.html (361 bytes)
 ├── package-lock.json (142,249 bytes)
 ├── package.json (892 bytes)
-├── testing.txt (27 bytes)
 ├── vite.config.js (161 bytes)
 ├── public/
 │   └── vite.svg (1,497 bytes)
